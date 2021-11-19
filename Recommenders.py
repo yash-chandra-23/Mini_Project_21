@@ -1,17 +1,17 @@
-import numpy as np
-import pandas
+import numpy as np  # inmporting the required directive
+import pandas      #importing pandas directive for program use 
 
 
-# Class for Popularity based Recommender System model
-class popularity_recommender_py():
-    def __init__(self):
-        self.train_data = None
+# Class for Popularity based Recommender System model   
+class popularity_recommender_py():  # created class popilatirity
+    def __init__(self):    #function definftion
+        self.train_data = None   # SET IR TO NONE 
         self.user_id = None
         self.item_id = None
         self.popularity_recommendations = None
 
     # Create the popularity based recommender system model
-    def create(self, train_data, user_id, item_id):
+    def create(self, train_data, user_id, item_id):  #FUNCTION
         self.train_data = train_data
         self.user_id = user_id
         self.item_id = item_id
@@ -70,7 +70,7 @@ class item_similarity_recommender_py():
 
         return item_users
 
-    # Get unique items (songs) in the training data
+    # Get unique items (songs) in the training data  # DONE ABOVE METHOD  NOW HERE WE RECOOMED THE BEST OUT THE BESRT ONE 
     def get_all_items_train_data(self):
         all_items = list(self.train_data[self.item_id].unique())
 
@@ -120,7 +120,7 @@ class item_similarity_recommender_py():
 
         return cooccurence_matrix
 
-    # Use the cooccurence matrix to make top recommendations
+    # Use the cooccurence matrix to make top recommendations # BASESD ON ALL THINGD WE WILL RECOOMED ALL SONGS
     def generate_top_recommendations(self, user, cooccurence_matrix, all_songs, user_songs):
         print("Non zero values in cooccurence_matrix :%d" % np.count_nonzero(cooccurence_matrix))
 
@@ -132,7 +132,7 @@ class item_similarity_recommender_py():
         # Also maintain the corresponding score
         sort_index = sorted(((e, i) for i, e in enumerate(list(user_sim_scores))), reverse=True)
 
-        # Create a dataframe from the following
+        # Create a dataframe from the following  #CFREATION OF DATA FRAME FOR PANDAS
         columns = ['user_id', 'song', 'score', 'rank']
         # index = np.arange(1) # array of numbers for the number of samples
         df = pandas.DataFrame(columns=columns)
